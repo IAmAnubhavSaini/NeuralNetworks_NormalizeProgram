@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Encodings.cs" />
     <Compile Include="Normalizations.cs" />
     <Compile Include="NormalizeProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
