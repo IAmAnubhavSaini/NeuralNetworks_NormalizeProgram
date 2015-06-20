@@ -1,0 +1,14 @@
+*.exe
+*.obj
+Debug/
+Obj/
+*.suo
+*.user
+bin/
+packages/
+App_Data/
+*.pdb
+*.patch
+*.map
+*.ilk
+*.cod
