@@ -5,14 +5,11 @@ namespace Normalize
     {
         public static string EffectsEncoding(int index, int N)
         {
-            // If N = 3 and index = 0 -> 1,0.
-            // If N = 3 and index = 1 -> 0,1.
-            // If N = 3 and index = 2 -> -1, -1.
             if (N == 2)
                 return SpecialCaseForEffectsEncoding(index);
 
             var values = new int[N - 1];
-            if (index == N - 1) // Last item is all - 1s.
+            if (index == N - 1) // Last item is all -1s.
             {
                 for (var i = 0; i < values.Length; ++i)
                     values[i] = -1;
