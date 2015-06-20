@@ -8,27 +8,39 @@ namespace Normalize
         static void Main(string[] args)
         {
             Console.WriteLine("\nBegin data encoding and normalization demo\n");
-            string[] sourceData = GenerateSourceData();
-            Console.WriteLine("Dummy data in raw form: \n");
-            ShowData(sourceData);
+            ProcessOriginalData();
+            EncodeOriginalData();
+            NormalizeEncodedData();
+            Console.WriteLine("\nEnd data encoding and normalization demo\n");
+            Console.ReadLine();
+        }
 
+        private static void EncodeOriginalData()
+        {
             var encodedData = GenerateEncodedData();
-
             //Encode(".. \\.. \\Politics.txt", ".. \\.. \\PoliticsEncoded.txt", 4, "dummy");
             Console.WriteLine("\nData after categorical encoding: \n");
             ShowData(encodedData);
             Console.WriteLine("\nNumeric data stored in matrix: \n");
+        }
+
+        private static void ProcessOriginalData()
+        {
+            string[] sourceData = GenerateSourceData();
+            Console.WriteLine("Dummy data in raw form: \n");
+            ShowData(sourceData);
+        }
+
+        private static void NormalizeEncodedData()
+        {
             var numericData = GetNumericData();
-            ShowMatrix(numericData, 2);
+            PrintMatrix(numericData, 2);
             Normalizations.GaussNormal(numericData, 1);
             Normalizations.MinMaxNormal(numericData, 4);
             Console.WriteLine("\nMatrix after normalization (Gaussian col. 1" +
             " and MinMax col. 4): \n");
-            ShowMatrix(numericData, 2);
-
-            Console.WriteLine("\nEnd data encoding and normalization demo\n");
-            Console.ReadLine();
-        } // Main
+            PrintMatrix(numericData, 2);
+        }
 
         private static double[][] GetNumericData()
         {
@@ -43,10 +55,10 @@ namespace Normalize
         private static string[] GenerateEncodedData()
         {
             var encodedData = new string[] {
-                "- 1 25 1 0 63,000.00 1 0 0",
-                " 1 36 0 1 55,000.00 0 1 0",
-                "- 1 40 - 1 -1 74,000.00 0 0 1",
-                " 1 23 1 0 28,000.00 0 1 0"
+                "-1 25  1  0 63,000.00 1 0 0",
+                " 1 36  0  1 55,000.00 0 1 0",
+                "-1 40 -1 -1 74,000.00 0 0 1",
+                " 1 23  1  0 28,000.00 0 1 0"
             };
             return encodedData;
         }
@@ -64,25 +76,44 @@ namespace Normalize
             return sourceData;
         }
 
-        static void ShowMatrix(double[][] matrix, int decimals)
+        static void PrintMatrix(double[][] matrix, int decimals)
         {
-            // sanity check
+            NullMatrixSanityCheck(matrix);
+            PrintMatrixRows(matrix, decimals);
+        }
+
+        private static void PrintMatrixRows(double[][] matrix, int decimals)
+        {
+            for (int i = 0; i < matrix.Length; ++i)
+            {
+                PrintCurrentRow(matrix, decimals, i);
+            }
+        }
+
+        private static void PrintCurrentRow(double[][] matrix, int decimals, int i)
+        {
+            for (int j = 0; j < matrix[i].Length; ++j)
+            {
+                PrintCurrentValue(matrix, decimals, i, j);
+            }
+            Console.WriteLine("");
+        }
+
+        private static void PrintCurrentValue(double[][] matrix, int decimals, int i, int j)
+        {
+            double v = Math.Abs(matrix[i][j]);
+            if (matrix[i][j] >= 0.0)
+                Console.Write(" ");
+            else
+                Console.Write("-");
+            Console.Write(v.ToString("F" + decimals).PadRight(5) + " ");
+        }
+
+        private static void NullMatrixSanityCheck(double[][] matrix)
+        {
             if (matrix == null)
             {
                 throw new ArgumentNullException("matrix", "matrix cannot be null.");
-            }
-            for (int i = 0; i < matrix.Length; ++i)
-            {
-                for (int j = 0; j < matrix[i].Length; ++j)
-                {
-                    double v = Math.Abs(matrix[i][j]);
-                    if (matrix[i][j] >= 0.0)
-                        Console.Write(" ");
-                    else
-                        Console.Write("-");
-                    Console.Write(v.ToString("F" + decimals).PadRight(5) + " ");
-                }
-                Console.WriteLine("");
             }
         }
         static void ShowData(IEnumerable<string> rawData)
