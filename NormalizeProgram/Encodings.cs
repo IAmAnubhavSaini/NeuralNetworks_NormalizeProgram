@@ -1,4 +1,5 @@
-﻿namespace Normalize
+﻿using System;
+namespace Normalize
 {
     public class Encodings
     {
@@ -30,6 +31,7 @@
         {
             if (index == 0) return "-1";
             else if (index == 1) return "1";
+            else throw new ArgumentOutOfRangeException("index", "Values for index can only be 0 or 1.");
         }
 
         public static string DummyEncoding(int index, int N)
