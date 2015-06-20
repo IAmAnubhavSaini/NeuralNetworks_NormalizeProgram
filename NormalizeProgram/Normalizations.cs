@@ -34,7 +34,7 @@ namespace Normalize
             // sanity check
             if (data == null)
             {
-                throw new ArgumentNullException("data", "input data for Min-Max normalization is null.");
+                throw new ArgumentNullException("data", "Input data for Min-Max normalization is null.");
             }
             int j = column;
             double min = data[0][j];

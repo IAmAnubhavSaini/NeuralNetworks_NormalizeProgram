@@ -27,7 +27,7 @@ namespace CodeTests
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException), "input data for Min-Max normalization is null.")]
+        [ExpectedException(typeof(ArgumentNullException), "Input data for Min-Max normalization is null.")]
         public void ErrorThrownWhenInputDataIsNull()
         {
             Normalizations.MinMaxNormal(null, 0);
