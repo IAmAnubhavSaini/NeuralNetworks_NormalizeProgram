@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Normalize;
+using System;
 
 namespace CodeTests
 {
@@ -28,9 +28,22 @@ namespace CodeTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException), "Input data for Min-Max normalization is null.")]
-        public void ErrorThrownWhenInputDataIsNull()
+        public void ExceptionThrownWhenInputDataIsNull()
         {
             Normalizations.MinMaxNormal(null, 0);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException), "Input `column` cannot be less than zero.")]
+        public void ExceptionThrownWhenColumnValueIsLessThanZero()
+        {
+            double[][] dummyData = new double[4][];
+            for (int i = 0; i < dummyData.Length; i++)
+            {
+                dummyData[i] = new double[1];
+                dummyData[i][0] = 25.00;
+            }
+            Normalizations.MinMaxNormal(dummyData, -1);
         }
     }
 }
