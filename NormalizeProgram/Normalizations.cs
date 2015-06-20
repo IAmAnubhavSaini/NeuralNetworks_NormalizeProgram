@@ -6,14 +6,7 @@ namespace Normalize
     {
         public static void GaussNormal(double[][] data, int column)
         {
-            // sanity check
-            if (data == null)
-            {
-                throw new ArgumentNullException("data", "Input data for Gaussian normalization is null.");
-            }
-            if (column < 0)
-                throw new ArgumentOutOfRangeException("column", "Input `column` cannot be less than zero.");
-
+            SanityCheck(data, "Input data for Gaussian normalization is null.", column, "Input `column` cannot be less than zero.");   
             int j = column; // Convenience.
             double sum = 0.0;
             for (int i = 0; i < data.Length; ++i)
@@ -34,13 +27,7 @@ namespace Normalize
 
         public static void MinMaxNormal(double[][] data, int column)
         {
-            // sanity check
-            if (data == null)
-            {
-                throw new ArgumentNullException("data", "Input data for Min-Max normalization is null.");
-            }
-            if (column < 0)
-                throw new ArgumentOutOfRangeException("column", "Input `column` cannot be less than zero.");
+            SanityCheck(data, "Input data for Min-Max normalization is null.", column, "Input `column` cannot be less than zero.");
             int j = column;
             double min = data[0][j];
             double max = data[0][j];
@@ -60,6 +47,14 @@ namespace Normalize
             }
             for (int i = 0; i < data.Length; ++i)
                 data[i][j] = (data[i][j] - min) / range;
+        }
+
+        private static void SanityCheck(double[][] data, string dataMessage, int column, string columnMessage)
+        {
+            if (data == null)
+                throw new ArgumentNullException("data", dataMessage);
+            if (column < 0)
+                throw new ArgumentOutOfRangeException("column", columnMessage);
         }
     }
 }
