@@ -36,6 +36,8 @@ namespace Normalize
             {
                 throw new ArgumentNullException("data", "Input data for Min-Max normalization is null.");
             }
+            if (column < 0)
+                throw new ArgumentOutOfRangeException("column", "Input `column` cannot be less than zero.");
             int j = column;
             double min = data[0][j];
             double max = data[0][j];
