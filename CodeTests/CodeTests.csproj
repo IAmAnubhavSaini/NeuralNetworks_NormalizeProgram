@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="TestMinMaxNormalizations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestGaussNormalizations.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NormalizeProgram\NormalizeProgram.csproj">
