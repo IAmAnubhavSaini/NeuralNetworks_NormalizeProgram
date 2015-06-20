@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NormalizeProgram", "NormalizeProgram\NormalizeProgram.csproj", "{DA5169F9-AEC1-4A45-9466-7FD3E8763634}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeTests", "CodeTests\CodeTests.csproj", "{DC28D9B9-89F6-4198-A5AE-BC790D8E2E5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DA5169F9-AEC1-4A45-9466-7FD3E8763634}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA5169F9-AEC1-4A45-9466-7FD3E8763634}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA5169F9-AEC1-4A45-9466-7FD3E8763634}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC28D9B9-89F6-4198-A5AE-BC790D8E2E5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC28D9B9-89F6-4198-A5AE-BC790D8E2E5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC28D9B9-89F6-4198-A5AE-BC790D8E2E5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC28D9B9-89F6-4198-A5AE-BC790D8E2E5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
