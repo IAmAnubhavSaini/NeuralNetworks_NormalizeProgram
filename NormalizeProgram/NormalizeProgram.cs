@@ -43,10 +43,10 @@ namespace Normalize
         private static string[] GenerateEncodedData()
         {
             var encodedData = new string[] {
-                "- 1 25 1 0 63,000.00 1 0 0" ,
-                " 1 36 0 1 55,000.00 0 1 0" ,
-                "- 1 40 - 1 -1 74,000.00 0 0 1" ,
-                " 1 23 1 0 28,000.00 0 1 0" 
+                "- 1 25 1 0 63,000.00 1 0 0",
+                " 1 36 0 1 55,000.00 0 1 0",
+                "- 1 40 - 1 -1 74,000.00 0 0 1",
+                " 1 23 1 0 28,000.00 0 1 0"
             };
             return encodedData;
         }
@@ -59,7 +59,7 @@ namespace Normalize
                 "Male 25 Rural 63,000.00 Conservative",
                 "Female 36 Suburban 55,000.00 Liberal",
                 "Male 40 Urban 74,000.00 Moderate",
-                "Female 23 Rural 28,000.00 Liberal" 
+                "Female 23 Rural 28,000.00 Liberal"
             };
             return sourceData;
         }
