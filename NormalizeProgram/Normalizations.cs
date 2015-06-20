@@ -9,8 +9,11 @@ namespace Normalize
             // sanity check
             if (data == null)
             {
-                throw new ArgumentNullException("data", "input data for Gaussian normalization is null.");
+                throw new ArgumentNullException("data", "Input data for Gaussian normalization is null.");
             }
+            if (column < 0)
+                throw new ArgumentOutOfRangeException("column", "Input `column` cannot be less than zero.");
+
             int j = column; // Convenience.
             double sum = 0.0;
             for (int i = 0; i < data.Length; ++i)
