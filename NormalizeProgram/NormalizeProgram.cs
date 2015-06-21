@@ -8,7 +8,7 @@ namespace Normalize
         static void Main(string[] args)
         {
             Console.WriteLine("\nBegin data encoding and normalization demo\n");
-            ProcessOriginalData();
+            GatherAndPresentSourceData();
             EncodeOriginalData();
             NormalizeEncodedData();
             Console.WriteLine("\nEnd data encoding and normalization demo\n");
@@ -18,15 +18,24 @@ namespace Normalize
         private static void EncodeOriginalData()
         {
             var encodedData = GenerateEncodedData();
-            //Encode(".. \\.. \\Politics.txt", ".. \\.. \\PoliticsEncoded.txt", 4, "dummy");
+            PrintEncodedData(encodedData);
+        }
+
+        private static void PrintEncodedData(string[] encodedData)
+        {
             Console.WriteLine("\nData after categorical encoding: \n");
             ShowData(encodedData);
             Console.WriteLine("\nNumeric data stored in matrix: \n");
         }
 
-        private static void ProcessOriginalData()
+        private static void GatherAndPresentSourceData()
         {
             string[] sourceData = GenerateSourceData();
+            PrintSourceData(sourceData);
+        }
+
+        private static void PrintSourceData(string[] sourceData)
+        {
             Console.WriteLine("Dummy data in raw form: \n");
             ShowData(sourceData);
         }
@@ -35,8 +44,18 @@ namespace Normalize
         {
             var numericData = GetNumericData();
             PrintMatrix(numericData, 2);
+            NormalizeData(numericData);
+            PrintNormalizedData(,numericData);
+        }
+
+        private static void NormalizeData(double[][] numericData)
+        {
             Normalizations.GaussNormal(numericData, 1);
             Normalizations.MinMaxNormal(numericData, 4);
+        }
+
+        private static void PrintNormalizedData(double[][] numericData)
+        {
             Console.WriteLine("\nMatrix after normalization (Gaussian col. 1" +
             " and MinMax col. 4): \n");
             PrintMatrix(numericData, 2);
